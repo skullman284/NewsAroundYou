@@ -1,0 +1,15 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/royalBlue</item>
+        <item name="colorPrimaryDark">@color/royalBlueDark</item>
+        <item name="colorPrimaryVariant">@color/royalBlueLight</item>
+        <item name="colorSecondary">@color/deepYellow</item>
+        <item name="colorSecondaryVariant">@color/deepYellowLight</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/deepYellowDark</item>
+    </style>
+
+</resources>

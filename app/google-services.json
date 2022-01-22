@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "327139964853",
+    "project_id": "newsaroundyou-311d7",
+    "storage_bucket": "newsaroundyou-311d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327139964853:android:a68d52f122601d242ecbfc",
+        "android_client_info": {
+          "package_name": "com.vansh.newsaroundyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "327139964853-ah0udear0v0ci26a9r3aqg7c370lbrhi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vansh.newsaroundyou",
+            "certificate_hash": "0b97dd243a63364c4dd9f11346021bbbca5bb465"
+          }
+        },
+        {
+          "client_id": "327139964853-85mqoduvvto1fte9cvc2fnlpjepev68i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkyEIl-qQbCNi8aZt1S7QT2CgVjoGQkxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "327139964853-85mqoduvvto1fte9cvc2fnlpjepev68i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

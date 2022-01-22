@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="royalBlue">#304ffe</color>
+    <color name="royalBlueDark">#0026ca</color>
+    <color name="royalBlueLight">#7a7cff</color>
+    <color name ="deepYellow">#ffd600</color>
+    <color name ="deepYellowDark">#c7a500</color>
+    <color name ="deepYellowLight">#ffff52</color>
+    <color name ="white">#ffffff</color>
+    <color name ="black">#000000</color>
+</resources>
