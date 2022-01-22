@@ -4,15 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/royalBlue"
+    android:textAlignment="center"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:transitionName="splash_to_login"
+        android:id="@+id/iv_splash"
+        android:layout_width="300dp"
+        android:layout_height="450dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_splash_tagline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_splash_name" />
+
     <TextView
+        android:id="@+id/tv_splash_name"
+        android:transitionName="splash_to_login_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:fontFamily="@font/bangers"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
+        android:textColor="@color/design_default_color_on_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_splash_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/anonymous_pro"
+        android:text="@string/tv_splash_tagline"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textColor="@color/design_default_color_on_primary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
