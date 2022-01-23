@@ -12,11 +12,11 @@
         <item name="colorAccent">@color/deepYellowDark</item>
         <item name="colorSurface">@color/royalBlue</item>
         <item name="colorSecondaryContainer">@color/deepYellowLight</item>
-        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowBackground">@mipmap/ic_launcher</item>
         <item name="android:statusBarColor">@color/royalBlue</item>
         <item name="android:windowContentTransitions">true</item>
     </style>

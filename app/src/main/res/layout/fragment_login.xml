@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:transitionName="splash_to_login"
+        android:id="@+id/iv_login"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="30dp"/>
+
+    <TextView
+        android:transitionName="splash_to_login_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/bangers"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:text="@string/login_title"
+        android:layout_margin="@dimen/default_margin"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/textfield_default_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:hint="@string/email"
+        app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="@dimen/textfield_default_width"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_password"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/textfield_default_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:hint="@string/password"
+        app:startIconDrawable="@drawable/ic_baseline_password_24"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
+            android:layout_width="@dimen/textfield_default_width"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/b_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:text="Forgot Password?"
+            android:padding="@dimen/default_padding"
+            android:layout_margin="@dimen/default_margin"/>
+
+        <Button
+            android:id="@+id/b_register"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:text="First Time? Register Now"
+            android:layout_margin="@dimen/default_margin"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/b_login"
+        android:layout_width="@dimen/textfield_default_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Login"
+        android:padding="@dimen/default_padding" />
+
+    <Button
+        android:id="@+id/b_guest"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Continue as Guest"
+        android:padding="@dimen/default_padding"
+        android:layout_margin="@dimen/default_margin"/>
+
+</LinearLayout>
