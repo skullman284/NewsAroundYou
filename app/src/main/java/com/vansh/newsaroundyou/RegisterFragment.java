@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +22,12 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +48,7 @@ public class RegisterFragment extends Fragment {
     //Declaring variables
     private FirebaseAuth firebaseAuth;
     private ImageView imageView;
-    private TextInputLayout etEmailRegister, etPasswordRegister;
+    private TextInputLayout etEmailRegister, etPasswordRegister, etConfirmPasswordRegister;
     private Button bRegisterRegister;
 
     public RegisterFragment() {
@@ -87,6 +94,7 @@ public class RegisterFragment extends Fragment {
         bRegisterRegister = view.findViewById(R.id.b_register_register);
         etEmailRegister = view.findViewById(R.id.et_email_register);
         etPasswordRegister = view.findViewById(R.id.et_password_register);
+        etConfirmPasswordRegister = view.findViewById(R.id.et_confirm_password_register);
 
         //load image
         Glide.with(this).load(R.drawable.icon).into(imageView);
@@ -95,25 +103,130 @@ public class RegisterFragment extends Fragment {
         bRegisterRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etEmailRegister.getText().toString();
-                String password = etPasswordRegister.getText().toString();
-                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //sign in success
-                        if (task.isSuccessful()) {
-                            Log.d("create", "createUserWithEmail:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.d("fail", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(getContext(), "Authentication failed",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                String email = etEmailRegister.getEditText().getText().toString().trim();
+                String password = etPasswordRegister.getEditText().getText().toString().trim();
+                String confirmPassword = etConfirmPasswordRegister.getEditText().getText().toString().trim();
+                Log.d("password", "test");
+                if (email.isEmpty()){
+                    etEmailRegister.setError("Please enter your email address");
+                }
+                if (etEmailRegister.getError() == null && isSame(password, confirmPassword) && isPasswordValid(password)) {
+                    registerUser(email, password);
+                }
+            }
+        });
+
+        //On text edited listener, remove error
+
+        etPasswordRegister.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                etPasswordRegister.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        etConfirmPasswordRegister.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                etConfirmPasswordRegister.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        etEmailRegister.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                etEmailRegister.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
             }
         });
         return view;
+    }
+
+    private void registerUser(String email,String password){
+        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                //sign in success
+                if (task.isSuccessful()) {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                } else {
+                    // If sign in fails, display a message to the user.
+                    try{
+                        throw task.getException();
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        etEmailRegister.setError("Invalid email");
+                        etEmailRegister.requestFocus();
+                    }
+                    catch (FirebaseAuthUserCollisionException e){
+                       etEmailRegister.setError("Account with this email address already exists");
+                       etEmailRegister.requestFocus();
+                    }
+                    catch(Exception e) {
+                        Log.e("Exception", e.getMessage());
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean isSame(String password, String confirmPassword){
+        if (!password.equals(confirmPassword)){
+            etConfirmPasswordRegister.setError("Passwords do not match");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    private boolean isPasswordValid(String password){
+        if (password.length() < 8 || password.length() > 32){
+            etConfirmPasswordRegister.setError("Password must be 8 - 32 characters");
+            return false;
+        }
+        if (!hasNumberCaps(password)){
+            etConfirmPasswordRegister.setError("Password must contain at least one capital letter and one number.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean hasNumberCaps(String password){
+        boolean hasNumber = false;
+        boolean hasCaps = false;
+        for (int i = 0; i < password.length(); i++){
+            try {
+                Integer.parseInt(String.valueOf(password.charAt(i)));
+                hasNumber = true;
+            } catch (NumberFormatException e){
+            }
+            if (Character.isUpperCase(password.charAt(i))){
+                hasCaps = true;
+            }
+        }
+        return hasNumber && hasCaps;
     }
 }

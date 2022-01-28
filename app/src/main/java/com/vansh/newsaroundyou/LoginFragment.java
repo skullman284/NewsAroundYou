@@ -2,6 +2,7 @@ package com.vansh.newsaroundyou;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,6 +14,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,8 +37,10 @@ public class LoginFragment extends Fragment {
     private String mParam2;
 
     //Declaring Variables
+    FirebaseAuth firebaseAuth;
     private ImageView imageView;
-    private Button bRegister;
+    private Button bRegister, bLogin;
+    private TextInputLayout etEmail, etPassword;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -72,21 +80,50 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         //hooks
+        firebaseAuth = FirebaseAuth.getInstance();
         imageView = view.findViewById(R.id.iv_login);
         bRegister = view.findViewById(R.id.b_register);
-
+        bLogin = view.findViewById(R.id.b_login);
+        etEmail = view.findViewById(R.id.et_email);
+        etPassword = view.findViewById(R.id.et_password);
 
         //Load image
         Glide.with(this).load(R.drawable.icon).into(imageView);
 
-
         //Button on click listeners
+
         //Register
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_loginFragment_to_registerFragment);
+            }
+        });
+
+        //Login
+        bLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = etEmail.getEditText().getText().toString().trim();
+                String password = etPassword.getEditText().getText().toString().trim();
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            //sign in success, move to next activity
+                        }
+                        else{
+                            //sign in fail
+                            try {
+                                throw task.getException();
+                            }
+                            catch (){
+
+                            }
+                        }
+                    }
+                });
             }
         });
 

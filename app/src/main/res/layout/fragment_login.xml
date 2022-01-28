@@ -10,8 +10,8 @@
     <ImageView
         android:transitionName="splash_to_login"
         android:id="@+id/iv_login"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_margin="30dp"/>
 
     <TextView
@@ -35,6 +35,7 @@
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="text"
             android:layout_width="@dimen/textfield_default_width"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
