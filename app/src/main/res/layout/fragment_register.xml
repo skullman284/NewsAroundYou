@@ -9,8 +9,13 @@
 
     <ImageView
         android:id="@+id/iv_register"
+<<<<<<< HEAD
         android:layout_width="150dp"
         android:layout_height="150dp"
+=======
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
         android:layout_margin="30dp"/>
 
     <TextView
@@ -19,8 +24,12 @@
         android:layout_gravity="center"
         android:fontFamily="@font/bangers"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+<<<<<<< HEAD
         android:text="Create Your Account"
         android:layout_margin="@dimen/default_margin"/>
+=======
+        android:text="Create Your Account"/>
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_email_register"
@@ -30,11 +39,22 @@
         android:layout_gravity="center"
         app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
         android:hint="@string/email"
+<<<<<<< HEAD
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="@dimen/textfield_default_width"
             android:layout_height="wrap_content" />
+=======
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="@dimen/textfield_default_width"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,8 +67,15 @@
         android:hint="@string/password"
         app:startIconDrawable="@drawable/ic_baseline_password_24"
         app:endIconMode="password_toggle"
+<<<<<<< HEAD
         app:helperTextEnabled="true"
         app:helperText="">
+=======
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error_24"
+        app:counterEnabled="true"
+        app:counterMaxLength="32">
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textPassword"
@@ -65,7 +92,15 @@
         app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
         android:hint="Confirm Password"
         app:startIconDrawable="@drawable/ic_baseline_replay_24"
+<<<<<<< HEAD
         app:endIconMode="password_toggle">
+=======
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error_24"
+        app:endIconMode="password_toggle"
+        app:counterEnabled="true"
+        app:counterMaxLength="32">
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textPassword"

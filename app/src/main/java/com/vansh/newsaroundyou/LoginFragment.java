@@ -2,6 +2,10 @@ package com.vansh.newsaroundyou;
 
 import android.os.Bundle;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,6 +17,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+<<<<<<< HEAD
+=======
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,8 +43,15 @@ public class LoginFragment extends Fragment {
     private String mParam2;
 
     //Declaring Variables
+<<<<<<< HEAD
     private ImageView imageView;
     private Button bRegister;
+=======
+    FirebaseAuth firebaseAuth;
+    private ImageView imageView;
+    private Button bRegister, bLogin;
+    private TextInputLayout etEmail, etPassword;
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 
     public LoginFragment() {
         // Required empty public constructor
@@ -72,15 +91,29 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         //hooks
+<<<<<<< HEAD
         imageView = view.findViewById(R.id.iv_login);
         bRegister = view.findViewById(R.id.b_register);
 
+=======
+        firebaseAuth = FirebaseAuth.getInstance();
+        imageView = view.findViewById(R.id.iv_login);
+        bRegister = view.findViewById(R.id.b_register);
+        bLogin = view.findViewById(R.id.b_login);
+        etEmail = view.findViewById(R.id.et_email);
+        etPassword = view.findViewById(R.id.et_password);
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 
         //Load image
         Glide.with(this).load(R.drawable.icon).into(imageView);
 
+<<<<<<< HEAD
 
         //Button on click listeners
+=======
+        //Button on click listeners
+
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
         //Register
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +123,35 @@ public class LoginFragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
+=======
+        //Login
+        bLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = etEmail.getEditText().getText().toString().trim();
+                String password = etPassword.getEditText().getText().toString().trim();
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            //sign in success, move to next activity
+                        }
+                        else{
+                            //sign in fail
+                            try {
+                                throw task.getException();
+                            }
+                            catch (){
+
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+>>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
         return view;
     }
 }
