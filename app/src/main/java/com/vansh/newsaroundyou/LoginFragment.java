@@ -115,12 +115,6 @@ public class LoginFragment extends Fragment {
                         }
                         else{
                             //sign in fail
-                            try {
-                                throw task.getException();
-                            }
-                            catch (){
-
-                            }
                         }
                     }
                 });
