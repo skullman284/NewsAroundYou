@@ -53,8 +53,8 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Pair pImage = Pair.create((View) imageView, "splash_to_login");
-                Pair pText = Pair.create((View) imageView, "splash_to_login_text");
+                Pair<View, String> pImage = Pair.create((View) imageView, "splash_to_login");
+                Pair<View, String> pText = Pair.create((View) imageView, "splash_to_login_text");
                 Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pImage, pText).toBundle();
                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent, bundle);
