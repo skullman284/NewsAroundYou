@@ -3,15 +3,31 @@
     <style name="AppTheme" parent="Theme.Material3.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/royalBlue</item>
-        <item name="colorPrimaryDark">@color/royalBlueDark</item>
-        <item name="colorPrimaryVariant">@color/royalBlueLight</item>
-        <item name="colorSecondary">@color/deepYellow</item>
-        <item name="colorSecondaryVariant">@color/deepYellowLight</item>
+        <item name="colorPrimaryContainer">@color/royalBlueDark</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="colorAccent">@color/deepYellowDark</item>
-        <item name="colorSurface">@color/royalBlue</item>
+        <item name="android:colorPrimaryDark">@color/royalBlueDarkDark</item>
+        <item name="android:textColorPrimary">@color/royalBlueDark</item>
+        <item name="colorSecondary">@color/deepYellow</item>
         <item name="colorSecondaryContainer">@color/deepYellowLight</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondaryContainer">@color/black</item>
+        <item name="android:textColorSecondary">@color/greyDark</item>
+        <item name="colorTertiary">@color/green</item>
+        <item name="colorTertiaryContainer">@color/greenLight</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorOnTertiaryContainer">@color/greenDark</item>
+        <item name="colorError">@color/redError</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="colorErrorContainer">@color/redErrorLight</item>
+        <item name="colorOnErrorContainer">@color/redErrorDark</item>
+        <item name="android:colorBackground">@color/offWhiteYellow</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorSurface">@color/royalBlue</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceVariant">@color/offWhiteBlue</item>
+        <item name="colorOnSurfaceVariant">@color/greyDark</item>
+        <item name="colorAccent">@color/deepYellowDark</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
 
@@ -20,4 +36,46 @@
         <item name="android:statusBarColor">@color/royalBlue</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
+    
+    <style name="TextAppearance.NewsAroundYou.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/lobster_two_bold</item>
+    </style>
+
+    <style name="TextAppearance.NewsAroundYou.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/indie_flower</item>
+    </style>
+
+    <style name="TextAppearance.NewsAroundYou.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/lobster_two</item>
+    </style>
+
+    <style name="TextAppearance.NewsAroundYou.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/lobster_two_bold</item>
+    </style>
+
+    <style name="TextAppearance.NewsAroundYou.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/indie_flower</item>
+    </style>
+
+    <style name="TextAppearance.NewsAroundYou.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/lobster_two</item>
+    </style>
+
+    <style name="TextAppearance.NewsAroundYou.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/indie_flower</item>
+    </style>
+
+    <style name="ZeroSizeTextAppearance">
+        <item name="android:textSize">0sp</item>
+    </style>
+
+    <style name="Widget.NewsAroundYou.Button.ElevatedButton" parent="AppTheme">
+        <item name="colorSurface">@color/royalBlueDark</item>
+        <item name="colorOnSurface">@color/black</item>
+    </style>
+
+    <style name="NewsAroundYou.Main.BottomNavigationView.ItemActiveIndicator" parent="AppTheme">
+        <item name="colorSecondaryContainer">@color/deepYellow</item>
+    </style>
+
 </resources>

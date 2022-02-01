@@ -20,30 +20,32 @@
 
     <TextView
         android:id="@+id/tv_splash_name"
-        android:transitionName="splash_to_login_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bangers"
+        android:layout_margin="30dp"
         android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.DisplayMedium"
         android:textColor="@color/design_default_color_on_primary"
+        android:transitionName="splash_to_login_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="30dp"/>
+        app:layout_constraintBottom_toTopOf="@id/iv_splash"/>
 
     <TextView
         android:id="@+id/tv_splash_tagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/anonymous_pro"
+        android:layout_margin="30dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/indie_flower"
         android:text="@string/tv_splash_tagline"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
         android:textColor="@color/design_default_color_on_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="30dp"/>
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

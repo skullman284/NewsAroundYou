@@ -3,5 +3,8 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/anonymous_pro</item>
         <item>@font/bangers</item>
+        <item>@font/indie_flower</item>
+        <item>@font/lobster_two</item>
+        <item>@font/lobster_two_bold</item>
     </array>
 </resources>

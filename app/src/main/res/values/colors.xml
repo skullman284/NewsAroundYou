@@ -2,10 +2,22 @@
 <resources>
     <color name="royalBlue">#304ffe</color>
     <color name="royalBlueDark">#0026ca</color>
-    <color name="royalBlueLight">#7a7cff</color>
-    <color name ="deepYellow">#ffd600</color>
-    <color name ="deepYellowDark">#c7a500</color>
+    <color name="royalBlueDarkDark">#000b63</color>
+    <color name="royalBlueLight">#2196F3</color>
+    <color name ="deepYellow">#FFCA28</color>
+    <color name ="deepYellowDark">#FFC107</color>
     <color name ="deepYellowLight">#FFFF00</color>
+    <color name="green">#1a6e00</color>
+    <color name="greenLight">#7cff4b</color>
+    <color name="greenDark">#032100</color>
+    <color name="redError">#ba1b1b</color>
+    <color name="redErrorLight">#ffdad4</color>
+    <color name="redErrorDark">#410001</color>
+    <color name="offWhiteYellow">#F9FBE7</color>
+    <color name="grey">#767680</color>
+    <color name="greyLight">#B5B4BA</color>
+    <color name="greyDark">#46464e</color>
+    <color name="offWhiteBlue">#E3F2FD</color>
     <color name ="white">#ffffff</color>
-    <color name ="black">#000000</color>
+    <color name ="black">#1b1b1f</color>
 </resources>

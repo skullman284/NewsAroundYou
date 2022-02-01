@@ -1,60 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    tools:context=".RegisterFragment">
 
     <ImageView
         android:id="@+id/iv_register"
-<<<<<<< HEAD
         android:layout_width="150dp"
         android:layout_height="150dp"
-=======
-        android:layout_width="140dp"
-        android:layout_height="140dp"
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
-        android:layout_margin="30dp"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_register_header"/>
 
     <TextView
+        android:id="@+id/tv_register_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/bangers"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-<<<<<<< HEAD
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.TitleLarge"
         android:text="Create Your Account"
-        android:layout_margin="@dimen/default_margin"/>
-=======
-        android:text="Create Your Account"/>
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/iv_register"
+        app:layout_constraintBottom_toTopOf="@id/et_email_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_email_register"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="@dimen/textfield_default_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:hintTextAppearance="@style/TextAppearance.NewsAroundYou.BodySmall"
         android:hint="@string/email"
-<<<<<<< HEAD
-        app:startIconDrawable="@drawable/ic_baseline_email_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="@dimen/textfield_default_width"
-            android:layout_height="wrap_content" />
-=======
         app:startIconDrawable="@drawable/ic_baseline_email_24"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/ic_baseline_error_24">
+        android:layout_marginBottom="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_register_header"
+        app:layout_constraintBottom_toTopOf="@id/et_password_register">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+            android:inputType="textEmailAddress"
             android:layout_width="@dimen/textfield_default_width"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_baseline_error_24"
+            android:textColor="@color/black"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,25 +57,26 @@
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="@dimen/textfield_default_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:hintTextAppearance="@style/TextAppearance.NewsAroundYou.BodySmall"
         android:hint="@string/password"
         app:startIconDrawable="@drawable/ic_baseline_password_24"
         app:endIconMode="password_toggle"
-<<<<<<< HEAD
-        app:helperTextEnabled="true"
-        app:helperText="">
-=======
         app:errorEnabled="true"
         app:errorIconDrawable="@drawable/ic_baseline_error_24"
         app:counterEnabled="true"
-        app:counterMaxLength="32">
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
+        app:counterMaxLength="32"
+        app:layout_constraintTop_toBottomOf="@id/et_email_register"
+        app:layout_constraintBottom_toTopOf="@id/et_confirm_password_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
             android:inputType="textPassword"
             android:layout_width="@dimen/textfield_default_width"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -89,23 +85,25 @@
         android:layout_width="@dimen/textfield_default_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        app:hintTextAppearance="@style/TextAppearance.NewsAroundYou.BodySmall"
         android:hint="Confirm Password"
         app:startIconDrawable="@drawable/ic_baseline_replay_24"
-<<<<<<< HEAD
-        app:endIconMode="password_toggle">
-=======
+        app:endIconMode="password_toggle"
         app:errorEnabled="true"
         app:errorIconDrawable="@drawable/ic_baseline_error_24"
-        app:endIconMode="password_toggle"
         app:counterEnabled="true"
-        app:counterMaxLength="32">
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
+        app:counterMaxLength="32"
+        app:layout_constraintTop_toBottomOf="@id/et_password_register"
+        app:layout_constraintBottom_toTopOf="@id/b_register_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textPassword"
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
             android:layout_width="@dimen/textfield_default_width"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -114,17 +112,29 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Register"
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+        android:theme="@style/Widget.NewsAroundYou.Button.ElevatedButton"
         android:padding="@dimen/default_padding"
-        android:layout_margin="@dimen/default_margin"/>
+        android:layout_margin="@dimen/default_margin"
+        android:enabled="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_confirm_password_register"
+        app:layout_constraintBottom_toTopOf="@id/b_guest_register"/>
 
     <Button
         android:id="@+id/b_guest_register"
         style="@style/Widget.Material3.Button.TonalButton"
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Continue as Guest"
         android:padding="@dimen/default_padding"
-        android:layout_margin="@dimen/default_margin"/>
+        android:layout_margin="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/b_register_register"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

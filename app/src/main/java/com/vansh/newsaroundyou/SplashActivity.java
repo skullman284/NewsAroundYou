@@ -2,6 +2,7 @@ package com.vansh.newsaroundyou;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     Animation topAnim, bottomAnim;
@@ -50,21 +52,13 @@ public class SplashActivity extends AppCompatActivity {
 
         Glide.with(this).load(R.drawable.icon).into(imageView);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Pair<View, String> pImage = Pair.create((View) imageView, "splash_to_login");
-                Pair<View, String> pText = Pair.create((View) imageView, "splash_to_login_text");
-                Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pImage, pText).toBundle();
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent, bundle);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        finish();
-                    }
-                }, FINISH_DELAY);
-            }
+        new Handler().postDelayed(() -> {
+            Pair<View, String> pImage = Pair.create((View) imageView, "splash_to_login");
+            Pair<View, String> pText = Pair.create((View) imageView, "splash_to_login_text");
+            Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, pImage, pText).toBundle();
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(intent, bundle);
+            new Handler().postDelayed(() -> finish(), FINISH_DELAY);
         }, SPLASH_SCREEN);
     }
 

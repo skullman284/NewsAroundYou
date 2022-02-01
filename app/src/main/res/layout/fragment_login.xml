@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    tools:context=".LoginFragment">
 
     <ImageView
-        android:transitionName="splash_to_login"
         android:id="@+id/iv_login"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_margin="30dp"/>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:transitionName="splash_to_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_login_header"/>
 
     <TextView
-        android:transitionName="splash_to_login_text"
+        android:id="@+id/tv_login_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/bangers"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:layout_margin="@dimen/default_margin"
         android:text="@string/login_title"
-        android:layout_margin="@dimen/default_margin"/>
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.TitleLarge"
+        android:transitionName="splash_to_login_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_login"
+        app:layout_constraintBottom_toTopOf="@id/et_email"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="@dimen/textfield_default_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:layout_margin="@dimen/default_margin"
         android:hint="@string/email"
+        app:errorTextAppearance="@style/ZeroSizeTextAppearance"
+        app:hintTextAppearance="@style/TextAppearance.NewsAroundYou.BodySmall"
+        app:layout_constraintBottom_toTopOf="@id/et_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_header"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:inputType="text"
             android:layout_width="@dimen/textfield_default_width"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+            app:layout_constraintBottom_toTopOf="@+id/et_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_login_header"
+            android:textColor="@color/black"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,32 +61,80 @@
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="@dimen/textfield_default_width"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:hintTextAppearance="@style/TextAppearance.Material3.BodySmall"
+        android:layout_margin="@dimen/default_margin"
         android:hint="@string/password"
-        app:startIconDrawable="@drawable/ic_baseline_password_24"
-        app:endIconMode="password_toggle">
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error_24"
+        app:hintTextAppearance="@style/TextAppearance.NewsAroundYou.BodySmall"
+        app:layout_constraintBottom_toTopOf="@+id/b_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email"
+        app:startIconDrawable="@drawable/ic_baseline_password_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:inputType="textPassword"
             android:layout_width="@dimen/textfield_default_width"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+            app:layout_constraintBottom_toTopOf="@+id/b_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_email"
+            android:textColor="@color/black"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/b_login"
+        android:layout_width="@dimen/textfield_default_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:enabled="false"
+        android:padding="@dimen/default_padding"
+        android:text="Login"
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+        android:theme="@style/Widget.NewsAroundYou.Button.ElevatedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password"
+        app:layout_constraintBottom_toTopOf="@id/b_guest" />
+
+    <Button
+        android:id="@+id/b_guest"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin"
+        android:padding="@dimen/default_padding"
+        android:text="Continue as Guest"
+        android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+        app:layout_constraintBottom_toTopOf="@id/login_linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/b_login"/>
+
     <LinearLayout
+        android:id="@+id/login_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_guest"
+        android:layout_margin="@dimen/default_margin"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/b_forgot_password"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:text="Forgot Password?"
             android:padding="@dimen/default_padding"
-            android:layout_margin="@dimen/default_margin"/>
+            android:text="Forgot Password?"
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge" />
 
         <Button
             android:id="@+id/b_register"
@@ -79,26 +143,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/default_padding"
             android:text="First Time? Register Now"
-            android:layout_margin="@dimen/default_margin"/>
-
+            android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/b_login"
-        android:layout_width="@dimen/textfield_default_width"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Login"
-        android:padding="@dimen/default_padding" />
-
-    <Button
-        android:id="@+id/b_guest"
-        style="@style/Widget.Material3.Button.TonalButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Continue as Guest"
-        android:padding="@dimen/default_padding"
-        android:layout_margin="@dimen/default_margin"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

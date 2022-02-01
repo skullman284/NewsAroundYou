@@ -4,12 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-<<<<<<< HEAD
-=======
 import android.text.Editable;
 import android.text.TextWatcher;
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,21 +17,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseUser;
-=======
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.SignInMethodQueryResult;
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RegisterFragment#newInstance} factory method to
@@ -55,12 +43,9 @@ public class RegisterFragment extends Fragment {
     //Declaring variables
     private FirebaseAuth firebaseAuth;
     private ImageView imageView;
-<<<<<<< HEAD
-    private TextInputLayout etEmailRegister, etPasswordRegister;
-=======
     private TextInputLayout etEmailRegister, etPasswordRegister, etConfirmPasswordRegister;
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
-    private Button bRegisterRegister;
+    private Button bRegisterRegister, bGuestRegister;
+    private Boolean emailEmpty = true, passwordEmpty = true, confirmPasswordEmpty = true;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -103,46 +88,29 @@ public class RegisterFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         imageView = view.findViewById(R.id.iv_register);
         bRegisterRegister = view.findViewById(R.id.b_register_register);
+        bGuestRegister = view.findViewById(R.id.b_guest_register);
         etEmailRegister = view.findViewById(R.id.et_email_register);
         etPasswordRegister = view.findViewById(R.id.et_password_register);
-<<<<<<< HEAD
-=======
         etConfirmPasswordRegister = view.findViewById(R.id.et_confirm_password_register);
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
-
         //load image
         Glide.with(this).load(R.drawable.icon).into(imageView);
+
+        //guest login
+        bGuestRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LaunchMain launchMain = new LaunchMain(getContext());
+                launchMain.launchGuest(firebaseAuth, bGuestRegister, getActivity());
+            }
+        });
 
         //create user
         bRegisterRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                String email = etEmailRegister.getText().toString();
-                String password = etPasswordRegister.getText().toString();
-                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        //sign in success
-                        if (task.isSuccessful()) {
-                            Log.d("create", "createUserWithEmail:success");
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.d("fail", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(getContext(), "Authentication failed",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-=======
                 String email = etEmailRegister.getEditText().getText().toString().trim();
                 String password = etPasswordRegister.getEditText().getText().toString().trim();
                 String confirmPassword = etConfirmPasswordRegister.getEditText().getText().toString().trim();
-                Log.d("password", "test");
-                if (email.isEmpty()){
-                    etEmailRegister.setError("Please enter your email address");
-                }
                 if (etEmailRegister.getError() == null && isSame(password, confirmPassword) && isPasswordValid(password)) {
                     registerUser(email, password);
                 }
@@ -163,6 +131,18 @@ public class RegisterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().isEmpty()){
+                    passwordEmpty = false;
+                }
+                else {
+                    passwordEmpty = true;
+                }
+                if (!emailEmpty && !passwordEmpty && !confirmPasswordEmpty){
+                    bRegisterRegister.setEnabled(true);
+                }
+                else{
+                    bRegisterRegister.setEnabled(false);
+                }
             }
         });
 
@@ -178,6 +158,18 @@ public class RegisterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().isEmpty()){
+                    confirmPasswordEmpty = false;
+                }
+                else {
+                    confirmPasswordEmpty = true;
+                }
+                if (!emailEmpty && !passwordEmpty && !confirmPasswordEmpty){
+                    bRegisterRegister.setEnabled(true);
+                }
+                else{
+                    bRegisterRegister.setEnabled(false);
+                }
             }
         });
 
@@ -185,7 +177,6 @@ public class RegisterFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 etEmailRegister.setError(null);
@@ -193,13 +184,22 @@ public class RegisterFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
+                if (!s.toString().isEmpty()){
+                    emailEmpty = false;
+                }
+                else {
+                    emailEmpty = true;
+                }
+                if (!emailEmpty && !passwordEmpty && !confirmPasswordEmpty){
+                    bRegisterRegister.setEnabled(true);
+                }
+                else{
+                    bRegisterRegister.setEnabled(false);
+                }
             }
         });
         return view;
     }
-<<<<<<< HEAD
-=======
 
     private void registerUser(String email,String password){
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -208,6 +208,8 @@ public class RegisterFragment extends Fragment {
                 //sign in success
                 if (task.isSuccessful()) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
+                    Snackbar.make(bRegisterRegister, "Registration: Success. Please proceed to the login page to login.", Snackbar.LENGTH_SHORT).show();
+                    //TODO directly to login page/go to next activity/snackbar button to login
                 } else {
                     // If sign in fails, display a message to the user.
                     try{
@@ -230,6 +232,7 @@ public class RegisterFragment extends Fragment {
 
     private boolean isSame(String password, String confirmPassword){
         if (!password.equals(confirmPassword)){
+            etPasswordRegister.setError(" ");
             etConfirmPasswordRegister.setError("Passwords do not match");
             return false;
         }
@@ -265,5 +268,4 @@ public class RegisterFragment extends Fragment {
         }
         return hasNumber && hasCaps;
     }
->>>>>>> be13155e465d7b7f0efad0a7149947b21b4b18bd
 }
