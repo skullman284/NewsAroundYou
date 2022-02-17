@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_margin="@dimen/default_margin"
     style="@style/Widget.Material3.CardView.Filled"
-    android:elevation="@dimen/cardview_default_elevation"
+    app:cardElevation="@dimen/cardview_default_elevation"
+    app:cardCornerRadius="@dimen/default_card_corner_radius"
     android:clickable="true"
     android:focusable="true"
     android:checkable="true">
@@ -18,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:layout_margin="@dimen/default_margin"
             android:orientation="vertical">
@@ -27,53 +28,65 @@
                 android:id="@+id/tv_home_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finance"
-                android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelMedium"
-                android:textColor="@color/deepYellowDark"/>
+                android:layout_weight="0.15"
+                android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelSmall"
+                android:textColor="@color/deepYellowDark"
+                tools:text="Finance" />
 
             <TextView
                 android:id="@+id/tv_home_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DBS optimistic on KIT after strategic review"
-                android:textAppearance="@style/TextAppearance.NewsAroundYou.TitleLarge"/>
+                android:layout_weight="0.55"
+                tools:text="DBS optimistic on KIT after strategic review"
+                android:textAppearance="@style/TextAppearance.NewsAroundYou.TitleMedium"/>
 
             <TextView
                 android:id="@+id/tv_home_publisher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Channel News Asia"
-                android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelMedium"/>
+                android:layout_weight="0.15"
+                tools:text="Channel News Asia"
+                android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelSmall"/>
 
             <TextView
                 android:id="@+id/tv_home_published_at"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="14 hours ago"
+                android:layout_weight="0.15"
+                tools:text="14 hours ago"
                 android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelSmall"
+                android:fontFamily="@font/indie_flower"
                 android:layout_gravity="bottom"/>
 
         </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:layout_margin="@dimen/default_margin"
                 android:orientation="vertical"
                 android:gravity="end">
 
-            <ImageView
-                android:id="@+id/iv_home_card"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="125dp"
-                android:background="@drawable/icon" />
+                android:layout_height="130dp"
+                app:cardCornerRadius="@dimen/default_card_corner_radius">
+                <ImageView
+                    android:id="@+id/iv_home_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:background="@drawable/icon" />
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:orientation="horizontal"
-                android:gravity="end">
+                android:gravity="bottom|end"
+                android:layout_marginTop="@dimen/default_margin">
 
                 <Button
                     android:id="@+id/b_home_share"

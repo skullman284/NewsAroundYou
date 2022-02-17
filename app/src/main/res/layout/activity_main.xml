@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_host"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/coordinator_main_appbar">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/main_appbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleCentered="true"
+                app:subtitleCentered="true"
+                style="@style/Widget.Material3.Toolbar.Surface"
+                app:titleTextAppearance="@style/TextAppearance.NewsAroundYou.TitleLarge"/>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -15,7 +38,7 @@
         app:navGraph = "@navigation/main_nav_graph"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coordinator_main_appbar"
         app:layout_constraintBottom_toTopOf="@id/main_bottom_navigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -77,7 +77,22 @@ public class NewsModel {
         return url;
     }
 
+    @Override
+    public String toString() {
+        return "NewsModel{" +
+                "title='" + title + '\'' +
+                ", category='" + category + '\'' +
+                ", author='" + author + '\'' +
+                ", content='" + content + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", urlToImage='" + urlToImage + '\'' +
+                ", publishedAt='" + publishedAt + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
+
     public void setUrl(String url) {
         this.url = url;
     }
+
 }

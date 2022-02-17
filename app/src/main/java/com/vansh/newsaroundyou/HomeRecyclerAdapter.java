@@ -1,6 +1,7 @@
 package com.vansh.newsaroundyou;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.Collections;
 import java.util.List;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder> {
@@ -97,10 +101,24 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull HomeRecyclerAdapter.ViewHolder holder, int position) {
 
+        if (newsModelList.size() == 0){
+            NewsModel newsModel = new NewsModel();
+            Collections.addAll(newsModelList, newsModel, newsModel, newsModel, newsModel, newsModel, newsModel);
+            Log.d("hello9", String.valueOf(newsModelList.size()));
+        }
+        holder.getTvHomeCategory().setText(newsModelList.get(position).getCategory());
+        holder.getTvHomeTitle().setText(newsModelList.get(position).getTitle());
+        holder.getTvHomePublisher().setText(newsModelList.get(position).getPublisher());
+        holder.getTvHomePublishedAt().setText(newsModelList.get(position).getPublishedAt());
+        Glide.with(context)
+                .load(newsModelList.get(position).getUrlToImage())
+                .placeholder(R.drawable.placeholder)
+                .into(holder.getIvHomeCard());
+
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return newsModelList.size();
     }
 }

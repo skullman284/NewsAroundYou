@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Material3.DayNight">
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/royalBlue</item>
         <item name="colorPrimaryContainer">@color/royalBlueDark</item>
@@ -57,12 +57,8 @@
         <item name="fontFamily">@font/indie_flower</item>
     </style>
 
-    <style name="TextAppearance.NewsAroundYou.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
-        <item name="fontFamily">@font/lobster_two</item>
-    </style>
-
     <style name="TextAppearance.NewsAroundYou.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
-        <item name="fontFamily">@font/indie_flower</item>
+        <item name="fontFamily">@font/lobster_two</item>
     </style>
 
     <style name="ZeroSizeTextAppearance">
