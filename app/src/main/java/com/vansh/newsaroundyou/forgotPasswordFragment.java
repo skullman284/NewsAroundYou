@@ -90,7 +90,7 @@ public class forgotPasswordFragment extends Fragment {
         //bsendemail click listner
         View.OnClickListener sendEmailClickListener = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 String email = etForgotEmail.getEditText().getText().toString().trim();
                 firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

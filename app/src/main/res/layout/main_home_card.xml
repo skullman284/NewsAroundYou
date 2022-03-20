@@ -10,7 +10,8 @@
     app:cardCornerRadius="@dimen/default_card_corner_radius"
     android:clickable="true"
     android:focusable="true"
-    android:checkable="true">
+    android:checkable="true"
+    android:id="@+id/card_home">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,8 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.15"
                 android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelSmall"
-                android:textColor="@color/deepYellowDark"
-                tools:text="Finance" />
+                tools:text="Headlines" />
 
             <TextView
                 android:id="@+id/tv_home_title"

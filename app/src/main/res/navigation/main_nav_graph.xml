@@ -10,7 +10,11 @@
         android:id="@+id/main_home_fragment"
         android:name="com.vansh.newsaroundyou.MainFragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_main_home_fragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/main_explore_fragment"
         android:name="com.vansh.newsaroundyou.MainFragments.ExploreFragment"
@@ -26,5 +30,10 @@
         android:name="com.vansh.newsaroundyou.MainFragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.vansh.newsaroundyou.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" />
 
 </navigation>

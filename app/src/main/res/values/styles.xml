@@ -7,7 +7,7 @@
         <item name="colorOnPrimaryContainer">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:colorPrimaryDark">@color/royalBlueDarkDark</item>
-        <item name="android:textColorPrimary">@color/royalBlueDark</item>
+        <item name="android:textColorPrimary">@color/royalBlueDarkDark</item>
         <item name="colorSecondary">@color/deepYellow</item>
         <item name="colorSecondaryContainer">@color/deepYellowLight</item>
         <item name="colorOnSecondary">@color/black</item>

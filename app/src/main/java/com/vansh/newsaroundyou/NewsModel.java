@@ -1,9 +1,9 @@
 package com.vansh.newsaroundyou;
 
 public class NewsModel {
-    private String title, category, author, content, publisher, urlToImage, publishedAt, url;
+    private String title, category, author, content, publisher, urlToImage, publishedAt, timeAgo, url;
 
-    public NewsModel(String title, String category, String author, String content, String publisher, String urlToImage, String publishedAt, String url) {
+    public NewsModel(String title, String category, String author, String content, String publisher, String urlToImage, String publishedAt, String timeAgo, String url) {
         this.title = title;
         this.category = category;
         this.author = author;
@@ -12,6 +12,7 @@ public class NewsModel {
         this.urlToImage = urlToImage;
         this.publishedAt = publishedAt;
         this.url = url;
+        this.timeAgo = timeAgo;
     }
 
     public NewsModel() {
@@ -71,6 +72,14 @@ public class NewsModel {
 
     public void setPublishedAt(String publishedAt) {
         this.publishedAt = publishedAt;
+    }
+
+    public String getTimeAgo() {
+        return timeAgo;
+    }
+
+    public void setTimeAgo(String timeAgo) {
+        this.timeAgo = timeAgo;
     }
 
     public String getUrl() {

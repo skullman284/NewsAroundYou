@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ArticleFragment">
+
+    <WebView
+        android:id="@+id/webview_article"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="90dp">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Material3.CardView.Filled"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_margin"
+            app:cardCornerRadius="@dimen/default_card_corner_radius"
+            app:cardElevation="@dimen/cardview_default_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_article_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/default_margin"
+                    android:textAppearance="@style/TextAppearance.NewsAroundYou.TitleLarge"
+                    tools:text="DBS optimistic on KIT after strategic review" />
+
+                <TextView
+                    android:id="@+id/tv_article_publisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:textAppearance="@style/TextAppearance.NewsAroundYou.TitleMedium"
+                    tools:text="Channel News Asia" />
+
+                <TextView
+                    android:id="@+id/tv_article_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelSmall"
+                    tools:text="By Andrew Roberts" />
+
+                <TextView
+                    android:id="@+id/tv_article_published_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:textAppearance="@style/TextAppearance.NewsAroundYou.LabelSmall"
+                    tools:text="Published on 31st August 2021" />
+
+                <ImageView
+                    android:id="@+id/iv_article"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/default_margin"
+                    android:scaleType="centerCrop"
+                    tools:background="@drawable/icon" />
+
+                <TextView
+                    android:id="@+id/tv_article_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+                    tools:text="@string/article_content_tools" />
+
+                <Button
+                    android:id="@+id/b_article_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:textAppearance="@style/TextAppearance.NewsAroundYou.BodyLarge"
+                    android:text="Click here to read the full article" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

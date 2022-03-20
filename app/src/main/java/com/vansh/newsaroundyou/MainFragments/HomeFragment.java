@@ -3,8 +3,13 @@ package com.vansh.newsaroundyou.MainFragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.FragmentNavigatorExtrasKt;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -14,8 +19,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.snackbar.Snackbar;
 import com.vansh.newsaroundyou.HomeRecyclerAdapter;
 import com.vansh.newsaroundyou.NewsModel;
+import com.vansh.newsaroundyou.NewsModelListViewModel;
 import com.vansh.newsaroundyou.R;
 
 import org.json.JSONObject;
@@ -42,7 +50,7 @@ import java.util.concurrent.Executors;
  * create an instance of this fragment.
  */
 public class
-HomeFragment extends Fragment {
+HomeFragment extends Fragment implements HomeRecyclerAdapter.ViewHolder.OnNoteListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,7 +64,13 @@ HomeFragment extends Fragment {
     //Initialise views
     private RecyclerView recyclerView;
     private HomeRecyclerAdapter adapter;
+    private CircularProgressIndicator circularProgressIndicator;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private NewsModelListViewModel newsModelListViewModel;
+
+    // static constants
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static String NEWSAPIURL = "https://newsapi.org/v2/top-headlines?language=en&apiKey=68c0ced1057946a48b0ed3257afa2043";
 
     public HomeFragment() {
         // Required empty public constructor
@@ -98,26 +112,26 @@ HomeFragment extends Fragment {
 
         //hooks
         recyclerView = view.findViewById(R.id.rv_home);
+        circularProgressIndicator = view.findViewById(R.id.circular_progress_home);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_home);
 
-        List<NewsModel> newsModelList = new ArrayList<>();
-        newsModelList = getNews();
-        while (newsModelList.size() < 1){
+        circularProgressIndicator.show();
+        //TODO circular progress indicator loading when changing fragments
 
-        }
-        adapter = new HomeRecyclerAdapter(getContext(), newsModelList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getNewsToRV(false);
+            }
+        });
 
-        //set up recycler view
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-
-
+        getNewsToRV(true);
 
         return view;
     }
 
-    private List<NewsModel> getNews (){
-
+    private void getNewsToRV (boolean init){
+        //helper function that fetches the news from a web API, parses the JSON format, and passes it to the recycler view
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         List<NewsModel> newsModelList = new ArrayList<>();
@@ -127,7 +141,7 @@ HomeFragment extends Fragment {
             public void run() {
                 String inline = "";
                 try {
-                    URL url = new URL("https://newsapi.org/v2/top-headlines?country=sg&apiKey=68c0ced1057946a48b0ed3257afa2043");
+                    URL url = new URL(NEWSAPIURL);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:221.0) Gecko/20100101 Firefox/31.0");
                     conn.setRequestMethod("GET");
@@ -160,41 +174,85 @@ HomeFragment extends Fragment {
                         newsModel.setTitle(titleSplit[0]);
                         newsModel.setPublisher(titleSplit.length !=1 ? titleSplit[titleSplit.length - 1] : "Unknown");
 
-                        newsModel.setCategory("Business");
+                        newsModel.setCategory("Headlines");
                         newsModel.setContent((String) jsonObjectArticles.get("content"));
 
-                        String timeAgo = timeFormatter((String) jsonObjectArticles.get("publishedAt"));
-                        newsModel.setPublishedAt(timeAgo);
+                        Calendar calendar = Calendar.getInstance();
+                        Date date = timeFormatter((String) jsonObjectArticles.get("publishedAt"));
+                        String timeAgo = (String) DateUtils.getRelativeTimeSpanString(date.getTime(), calendar.getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS);
+                        String publishedAt= date.toString();
+                        newsModel.setPublishedAt(publishedAt);
+                        newsModel.setTimeAgo(timeAgo);
 
                         newsModel.setUrl((String) jsonObjectArticles.get("url"));
                         newsModel.setUrlToImage((String) jsonObjectArticles.get("urlToImage"));
-                        newsModelList.add(newsModel);
+
+                        if (newsModel.getContent() != null) {
+                            newsModelList.add(newsModel);
+                        }
                     }
                     //Disconnect the HttpURLConnection stream
                     conn.disconnect();
+
+
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (init) {
+                                adapter = new HomeRecyclerAdapter(getContext(), newsModelList, HomeFragment.this);
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+                                //set up recycler view
+                                recyclerView.setLayoutManager(layoutManager);
+                                recyclerView.setAdapter(adapter);
+                                circularProgressIndicator.hide();
+                            }
+                            else {
+                                adapter.notifyDataSetChanged();
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        }
+                    });
+
                 } catch (Exception e) {
                     Log.d("exception", e.toString());
                 }
             }
             });
-        return newsModelList;
+
+        //updating the news model list view model
+        newsModelListViewModel = new ViewModelProvider(requireActivity()).get(NewsModelListViewModel.class);
+        newsModelListViewModel.setNewsModelList(newsModelList);
         }
 
        private String[] splitTitlePublisher(String title){
+            //helper function that helps extract the publisher from the title
             String[] titleSplit = title.split(" - ");
             return titleSplit;
        }
 
-       private String timeFormatter (String time){
-           Calendar calendar = Calendar.getInstance();
-           String timeAgo = "0 minutes ago";
+       private Date timeFormatter (String time){
+        //helper function that helps convert the time in iso format to time ago
+
+           Date date = new Date();
            try {
-               Date date = simpleDateFormat.parse(time);
-               timeAgo = (String) DateUtils.getRelativeTimeSpanString(date.getTime(), calendar.getTimeInMillis(), DateUtils.MINUTE_IN_MILLIS);
+               date = simpleDateFormat.parse(time);
            } catch (ParseException e) {
                Log.d("exception", e.toString());
            }
-           return timeAgo;
+           return date;
        }
 
+    @Override
+    public void onNoteClick(int position) {
+
+        newsModelListViewModel = new ViewModelProvider(requireActivity()).get(NewsModelListViewModel.class);
+        newsModelListViewModel.setPosition(position);
+
+        //use a random view to find the navhost
+        NavController navController = Navigation.findNavController(recyclerView);
+
+        navController.navigate(R.id.action_main_home_fragment_to_articleFragment);
+
+    }
 }

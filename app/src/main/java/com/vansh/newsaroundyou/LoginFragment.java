@@ -152,7 +152,7 @@ public class LoginFragment extends Fragment {
         //Forgot Password
         bForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_loginFragment_to_forgotPasswordFragment);
             }
@@ -161,7 +161,7 @@ public class LoginFragment extends Fragment {
         //Guest
         bGuest.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 LaunchMain launchMain = new LaunchMain(getContext());
                 launchMain.launchGuest(firebaseAuth, bGuest, getActivity());
             }

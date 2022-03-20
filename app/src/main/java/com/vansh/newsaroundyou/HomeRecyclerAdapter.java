@@ -14,6 +14,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,21 +22,25 @@ import java.util.List;
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder> {
     private Context context;
     private List<NewsModel> newsModelList;
+    private ViewHolder.OnNoteListener onNoteListener;
 
-    public HomeRecyclerAdapter(Context context, List<NewsModel> newsModelList) {
+    public HomeRecyclerAdapter(Context context, List<NewsModel> newsModelList, ViewHolder.OnNoteListener onNoteListener) {
         this.context = context;
         this.newsModelList = newsModelList;
+        this.onNoteListener = onNoteListener;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView tvHomeTitle, tvHomeCategory, tvHomePublisher, tvHomePublishedAt;
         private ImageView ivHomeCard;
         private Button bHomeShare, bHomeBookmark;
+        public OnNoteListener onNoteListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener){
             super(itemView);
 
+            this.onNoteListener = onNoteListener;
             //Find views
             tvHomeTitle = itemView.findViewById(R.id.tv_home_title);
             tvHomeCategory = itemView.findViewById(R.id.tv_home_category);
@@ -52,6 +57,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                     //TODO share, intent TO BE USED?
                 }
             });
+
             //temporary, later need to store in cloud if bookmarked or not and check from there
 
             bHomeBookmark.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +66,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
                     bHomeBookmark.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
                 }
             });
+
+            //items on click listener
+            itemView.setOnClickListener(this);
+
         }
 
         public TextView getTvHomeTitle() {
@@ -89,13 +99,22 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         public Button getbHomeBookmark() {
             return bHomeBookmark;
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
+
+        public interface OnNoteListener{
+            void onNoteClick(int position);
+        }
     }
 
     @NonNull
     @Override
     public HomeRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_home_card, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, onNoteListener);
     }
 
     @Override
@@ -109,7 +128,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         holder.getTvHomeCategory().setText(newsModelList.get(position).getCategory());
         holder.getTvHomeTitle().setText(newsModelList.get(position).getTitle());
         holder.getTvHomePublisher().setText(newsModelList.get(position).getPublisher());
-        holder.getTvHomePublishedAt().setText(newsModelList.get(position).getPublishedAt());
+        holder.getTvHomePublishedAt().setText(newsModelList.get(position).getTimeAgo());
         Glide.with(context)
                 .load(newsModelList.get(position).getUrlToImage())
                 .placeholder(R.drawable.placeholder)

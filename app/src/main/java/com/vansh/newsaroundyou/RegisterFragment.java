@@ -98,7 +98,7 @@ public class RegisterFragment extends Fragment {
         //guest login
         bGuestRegister.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 LaunchMain launchMain = new LaunchMain(getContext());
                 launchMain.launchGuest(firebaseAuth, bGuestRegister, getActivity());
             }
