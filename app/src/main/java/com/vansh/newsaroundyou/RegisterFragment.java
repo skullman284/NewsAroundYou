@@ -1,9 +1,13 @@
 package com.vansh.newsaroundyou;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,13 +21,20 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.transition.platform.MaterialFadeThrough;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RegisterFragment#newInstance} factory method to
@@ -46,6 +57,7 @@ public class RegisterFragment extends Fragment {
     private TextInputLayout etEmailRegister, etPasswordRegister, etConfirmPasswordRegister;
     private Button bRegisterRegister, bGuestRegister;
     private Boolean emailEmpty = true, passwordEmpty = true, confirmPasswordEmpty = true;
+    private NavController navController;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -72,6 +84,8 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setEnterTransition(new MaterialFadeThrough());
+        setExitTransition(new MaterialFadeThrough());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -111,6 +125,7 @@ public class RegisterFragment extends Fragment {
                 String email = etEmailRegister.getEditText().getText().toString().trim();
                 String password = etPasswordRegister.getEditText().getText().toString().trim();
                 String confirmPassword = etConfirmPasswordRegister.getEditText().getText().toString().trim();
+                navController = Navigation.findNavController(view);
                 if (etEmailRegister.getError() == null && isSame(password, confirmPassword) && isPasswordValid(password)) {
                     registerUser(email, password);
                 }
@@ -207,9 +222,67 @@ public class RegisterFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //sign in success
                 if (task.isSuccessful()) {
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    Snackbar.make(bRegisterRegister, "Registration: Success. Please proceed to the login page to login.", Snackbar.LENGTH_SHORT).show();
-                    //TODO directly to login page/go to next activity/snackbar button to login
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(LaunchMain.USER);
+                    ArrayList<String> categories = new ArrayList<>();
+                    User newUser = new User(email);
+                    newUser.setRegion("Singapore");
+                    new MaterialAlertDialogBuilder(getContext())
+                            .setTitle("Select your Region")
+                            .setSingleChoiceItems(LoginFragment.REGIONS, 14, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    newUser.setRegion(LoginFragment.REGIONS[i]);
+                                }
+                            })
+                            .setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                    new MaterialAlertDialogBuilder(getContext())
+                                            .setTitle("Select your preferred categories")
+                                            .setPositiveButton("Done", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    if (categories.isEmpty()){
+                                                        categories.add("General");
+                                                    }
+                                                    newUser.setCategories(categories);
+                                                    databaseReference.child(firebaseUser.getUid()).setValue(newUser);
+                                                    navController.navigateUp();
+                                                }
+                                            })
+                                            .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    firebaseUser.delete();
+                                                    dialogInterface.dismiss();
+                                                }
+                                            })
+                                            .setMultiChoiceItems(LoginFragment.CATEGORIES, null, new DialogInterface.OnMultiChoiceClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                                                    if (b){
+                                                        categories.add(LoginFragment.CATEGORIES[i]);
+                                                    }
+                                                    else {
+                                                        categories.remove(LoginFragment.CATEGORIES[i]);
+                                                    }
+                                                }
+                                            })
+                                            .show();
+
+                                }
+                            })
+                            .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    firebaseUser.delete();
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .show();
+
                 } else {
                     // If sign in fails, display a message to the user.
                     try{

@@ -21,13 +21,15 @@
         <item name="colorOnError">@color/white</item>
         <item name="colorErrorContainer">@color/redErrorLight</item>
         <item name="colorOnErrorContainer">@color/redErrorDark</item>
-        <item name="android:colorBackground">@color/offWhiteYellow</item>
+        <item name="android:colorBackground">@color/white</item>
         <item name="colorOnBackground">@color/black</item>
         <item name="colorSurface">@color/royalBlue</item>
         <item name="colorOnSurface">@color/white</item>
         <item name="colorSurfaceVariant">@color/offWhiteBlue</item>
         <item name="colorOnSurfaceVariant">@color/greyDark</item>
         <item name="colorAccent">@color/deepYellowDark</item>
+        <item name="materialAlertDialogTheme">@style/NewsAroundYou.Main.MaterialAlertDialog</item>
+
         <item name="android:windowContentTransitions">true</item>
     </style>
 
@@ -70,8 +72,15 @@
         <item name="colorOnSurface">@color/black</item>
     </style>
 
+
     <style name="NewsAroundYou.Main.BottomNavigationView.ItemActiveIndicator" parent="AppTheme">
         <item name="colorSecondaryContainer">@color/deepYellow</item>
+    </style>
+    
+    <style name="NewsAroundYou.Main.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="colorSurface">@color/offWhiteBlue</item>
+        <item name="colorOnSurface">@color/greyDark</item>
+        <item name="colorPrimary">@color/royalBlueDarkDark</item>
     </style>
 
 </resources>

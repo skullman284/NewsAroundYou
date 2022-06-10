@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.vansh.newsaroundyou.LoginFragment"
-        android:label="fragment_login"
+        android:label="NewsAroundYou"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
@@ -21,12 +21,12 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.vansh.newsaroundyou.RegisterFragment"
-        android:label="fragment_register"
+        android:label="NewsAroundYou"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.vansh.newsaroundyou.forgotPasswordFragment"
-        android:label="fragment_forgot_password"
+        android:label="NewsAroundYou"
         tools:layout="@layout/fragment_forgot_password" />
 
 </navigation>

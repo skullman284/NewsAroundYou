@@ -4,36 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
     app:startDestination="@id/main_home_fragment">
-    <!-- TODO ensure ids of fragments in nav graph and menu items are the same -->
 
     <fragment
         android:id="@+id/main_home_fragment"
         android:name="com.vansh.newsaroundyou.MainFragments.HomeFragment"
-        android:label="fragment_home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_main_home_fragment_to_articleFragment"
             app:destination="@id/articleFragment" />
     </fragment>
     <fragment
-        android:id="@+id/main_explore_fragment"
-        android:name="com.vansh.newsaroundyou.MainFragments.ExploreFragment"
-        android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
-    <fragment
         android:id="@+id/main_saved_fragment"
         android:name="com.vansh.newsaroundyou.MainFragments.SavedFragment"
-        android:label="fragment_saved"
-        tools:layout="@layout/fragment_saved" />
+        android:label="Saved"
+        tools:layout="@layout/fragment_saved" >
+        <action
+            android:id="@+id/action_main_saved_fragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/main_settings_fragment"
         android:name="com.vansh.newsaroundyou.MainFragments.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/articleFragment"
         android:name="com.vansh.newsaroundyou.ArticleFragment"
-        android:label="fragment_article"
+        android:label="NewsAroundYou"
         tools:layout="@layout/fragment_article" />
 
 </navigation>

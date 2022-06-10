@@ -1,5 +1,6 @@
 package com.vansh.newsaroundyou;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -20,11 +21,15 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.transition.platform.MaterialFadeThrough;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.nio.file.Watchable;
 
@@ -51,6 +56,12 @@ public class LoginFragment extends Fragment {
     private TextInputLayout etEmail, etPassword;
     private Boolean emailEmpty = true, passwordEmpty = true;
 
+    //static constants
+    public final static String[] REGIONS = new String[]{"Australia", "Belgium", "Canada", "Switzerland", "France", "United Kingdom",
+            "Hong Kong", "India", "Japan", "Malaysia", "New Zealand", "Philippines", "Russia", "South Africa", "Singapore", "Thailand",
+            "United States of America", "Ukraine", "Venezuela"};
+    public final static String[] CATEGORIES = new String[]{"Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"};
+
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -76,6 +87,8 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setEnterTransition(new MaterialFadeThrough());
+        setExitTransition(new MaterialFadeThrough());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -103,15 +116,16 @@ public class LoginFragment extends Fragment {
         Glide.with(this).load(R.drawable.icon).into(imageView);
 
         //Check if user is logged in
-        firebaseAuth.signOut();
         if (firebaseAuth.getCurrentUser() != null) {
             // User is signed in
             LaunchMain launchMain = new LaunchMain(getContext());
             launchMain.launch();
+            requireActivity().finish();
         } else {
             // User is signed out
             Log.d("TAG", "onAuthStateChanged:signed_out");
         }
+
 
         //Button on click listeners
 

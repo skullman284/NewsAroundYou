@@ -24,7 +24,7 @@
                 android:layout_height="?attr/actionBarSize"
                 app:titleCentered="true"
                 app:subtitleCentered="true"
-                style="@style/Widget.Material3.Toolbar.Surface"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 app:titleTextAppearance="@style/TextAppearance.NewsAroundYou.TitleLarge"/>
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

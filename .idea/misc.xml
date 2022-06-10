@@ -9,24 +9,38 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/NewsAroundYou/app/src/main/res/layout/fragment_forgot_password.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NewsAroundYou/app/src/main/res/layout/fragment_home.xml" value="0.151268115942029" />
         <entry key="..\:/Users/User/AndroidStudioProjects/NewsAroundYou/app/src/main/res/layout/main_home_card.xml" value="0.22" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.2985" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2985" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.1825" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.26" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_password_24.xml" value="0.1825" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1825" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_replay_24.xml" value="0.1825" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2985" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.2985" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_baseline_share_24.xml" value="0.2985" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/drawable/ic_outline_bookmark_border_24.xml" value="0.2985" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/font/anonymous_pro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/font/bangers.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/activity_login.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/activity_main.xml" value="0.1909814323607427" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/activity_searchable.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/activity_splash.xml" value="0.33" />
-        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_article.xml" value="0.2188449848024316" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_article.xml" value="0.1" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_explore.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_forgot_password.xml" value="0.3496376811594203" />
-        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_register.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_saved.xml" value="0.3496376811594203" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_settings.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/fragment_watch.xml" value="0.3496376811594203" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/main_home_card.xml" value="0.2" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/layout/main_settings_card.xml" value="0.3496376811594203" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/menu/menu_main_appbar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/menu/menu_main_appbar_article.xml" value="0.1287037037037037" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/menu/menu_main_appbar_explore.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/menu/menu_main_appbar_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Documents/NewsAroundYou/app/src/main/res/menu/menu_main_bottom_navigation.xml" value="0.36666666666666664" />
       </map>
     </option>

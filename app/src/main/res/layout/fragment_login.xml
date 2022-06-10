@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".LoginFragment"
+    android:transitionGroup="true">
 
     <ImageView
         android:id="@+id/iv_login"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_margin="@dimen/default_margin"
         android:transitionName="splash_to_login"
+        app:layout_constraintBottom_toTopOf="@id/tv_login_header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_login_header"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/tv_login_header"

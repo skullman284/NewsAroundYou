@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_margin="@dimen/default_margin"
     style="@style/Widget.Material3.CardView.Filled"
+    app:strokeWidth="1.5dp"
+    app:strokeColor="@color/deepYellowDark"
     app:cardElevation="@dimen/cardview_default_elevation"
     app:cardCornerRadius="@dimen/default_card_corner_radius"
     android:clickable="true"
@@ -90,15 +92,10 @@
 
                 <Button
                     android:id="@+id/b_home_share"
-                    android:layout_width="25dp"
+                    android:layout_width="35dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ic_baseline_share_24"/>
-
-                <Button
-                    android:id="@+id/b_home_bookmark"
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_outline_bookmark_border_24"/>
+                    android:background="@drawable/ic_baseline_share_24"
+                    android:clickable="true"/>
 
             </LinearLayout>
         </LinearLayout>

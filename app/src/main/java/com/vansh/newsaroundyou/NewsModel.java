@@ -1,6 +1,6 @@
 package com.vansh.newsaroundyou;
 
-public class NewsModel {
+public class NewsModel implements Comparable<NewsModel> {
     private String title, category, author, content, publisher, urlToImage, publishedAt, timeAgo, url;
 
     public NewsModel(String title, String category, String author, String content, String publisher, String urlToImage, String publishedAt, String timeAgo, String url) {
@@ -104,4 +104,9 @@ public class NewsModel {
         this.url = url;
     }
 
+    @Override
+    public int compareTo(NewsModel newsModel) {
+        return this.title.compareTo(newsModel.getTitle());
+
+    }
 }
