@@ -110,11 +110,11 @@ public class SettingsFragment extends Fragment implements SettingsRecyclerAdapte
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         //setting tv text
-        String tvText = firebaseUser.getEmail().toUpperCase(Locale.ROOT);
+        String tvText = firebaseUser.getEmail();
         if (tvText == ""){
             tvText = "Guest User";
         }
-        tvSettings.setText(tvText);
+        tvSettings.setText(tvText.toUpperCase(Locale.ROOT));
 
         //setting up the recycler view
         adapter = new SettingsRecyclerAdapter(requireContext(), this);

@@ -31,7 +31,6 @@ public class LaunchMain {
     public void launch(){
         Intent i = new Intent(context, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        Log.d("hello", "activated");
         context.startActivity(i);
     }
 

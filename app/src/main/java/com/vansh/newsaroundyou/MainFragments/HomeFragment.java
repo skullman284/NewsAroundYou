@@ -173,6 +173,16 @@ HomeFragment extends Fragment implements HomeRecyclerAdapter.ViewHolder.OnNoteLi
         COUNTRYCODES.put("Ukraine", "ua");
         COUNTRYCODES.put("Venezuela", "ve");
 
+        //Receiving the intent, verifying action, getting query, put in oncreate to avoid multiple recivers being registered
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                //handling the intent received i.e. carrying out the search
+                handleIntent(intent);
+            }
+        };
+        LocalBroadcastManager.getInstance(context).registerReceiver(broadcastReceiver, new IntentFilter("android.intent.action.SEARCH"));
+
     }
 
     @Override
@@ -188,7 +198,6 @@ HomeFragment extends Fragment implements HomeRecyclerAdapter.ViewHolder.OnNoteLi
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
 
         //hooks
         recyclerView = view.findViewById(R.id.rv_home);
@@ -241,16 +250,6 @@ HomeFragment extends Fragment implements HomeRecyclerAdapter.ViewHolder.OnNoteLi
             }
         });
 
-
-        //Receiving the intent, verifying action, getting query
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                //handling the intent received i.e. carrying out the search
-                handleIntent(intent);
-            }
-        };
-        LocalBroadcastManager.getInstance(context).registerReceiver(broadcastReceiver, new IntentFilter("android.intent.action.SEARCH"));
 
         //handling back presses
         OnBackPressedCallback onBackPressedCallback =  new OnBackPressedCallback(true) {
