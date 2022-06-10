@@ -19,7 +19,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <!-- enable the search dialog to send searches to SearchableActivity -->
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -31,10 +32,12 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
