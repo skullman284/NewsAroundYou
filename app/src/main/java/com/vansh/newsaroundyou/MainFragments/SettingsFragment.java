@@ -111,7 +111,7 @@ public class SettingsFragment extends Fragment implements SettingsRecyclerAdapte
 
         //setting tv text
         String tvText = firebaseUser.getEmail();
-        if (tvText == ""){
+        if (tvText.isEmpty()){
             tvText = "Guest User";
         }
         tvSettings.setText(tvText.toUpperCase(Locale.ROOT));
