@@ -56,7 +56,7 @@ public class LaunchMain {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
                                                     if (categories.isEmpty()){
-                                                        categories.add("general");
+                                                        categories.add("General");
                                                     }
                                                     guestUser.setCategories(categories);
                                                     databaseReference.child(firebaseUser.getUid()).setValue(guestUser);
