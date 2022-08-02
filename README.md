@@ -4,7 +4,7 @@ NewsAroundYou is an android news application that allows its users to read news 
 This application uses [News API](https://newsapi.org) to fetch news articles from the web and display them to the user based on their selected region and preferred categories. Firebase was used for the backend to allow user authentication and for its realtime database so that user data and preferences can be saved, and their favourite articles can be bookmarked. The application also allows users to change their region and categories, and share their chosen articles with their contacts through social media. A material design theme was implemented using java and XML for the front end. Built using android studio.
 ## **Running the App**
 ### **Direct installation**
-1. Install the debug [APK]() on your local android device.
+1. Install the debug [APK](https://github.com/vansh284/NewsAroundYou/blob/master/apk/debug/app-debug.apk) on your local android device.
 2. Allow your device to install applications from unknown sources by going to `Settings > Apps > Menu > Special Access > Install unknown apps`
 3. Open the downloaded APK in your file manager.
 ### **Build from source code on Android Studio**
@@ -15,6 +15,3 @@ This application uses [News API](https://newsapi.org) to fetch news articles fro
 5. Ensure USB debugging is enabled on your device.
 6. If no android device is available, you may create an [Android Virtual Device(AVD)](https://developer.android.com/studio/run/managing-avds) using android studio.
 7. On Android Studio select your device and then click on the play icon on the top bar.
-## **How to Use the Application**
-
-
