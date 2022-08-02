@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Miscellaneous;
 
 import java.util.ArrayList;
 

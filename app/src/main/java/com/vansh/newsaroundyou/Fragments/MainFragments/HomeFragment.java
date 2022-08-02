@@ -1,10 +1,6 @@
-package com.vansh.newsaroundyou.MainFragments;
-
-import static java.util.Map.entry;
+package com.vansh.newsaroundyou.Fragments.MainFragments;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -45,13 +41,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.collection.ImmutableSortedMap;
-import com.vansh.newsaroundyou.HomeRecyclerAdapter;
-import com.vansh.newsaroundyou.LaunchMain;
-import com.vansh.newsaroundyou.MainActivity;
-import com.vansh.newsaroundyou.NewsModel;
-import com.vansh.newsaroundyou.NewsModelListViewModel;
-import com.vansh.newsaroundyou.NewsSuggestionProvider;
+import com.vansh.newsaroundyou.Adapters.HomeRecyclerAdapter;
+import com.vansh.newsaroundyou.Miscellaneous.LaunchMain;
+import com.vansh.newsaroundyou.Activities.MainActivity;
+import com.vansh.newsaroundyou.Miscellaneous.NewsModel;
+import com.vansh.newsaroundyou.Miscellaneous.NewsModelListViewModel;
+import com.vansh.newsaroundyou.Miscellaneous.NewsSuggestionProvider;
 import com.vansh.newsaroundyou.R;
 
 import org.json.simple.JSONArray;
@@ -65,16 +60,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

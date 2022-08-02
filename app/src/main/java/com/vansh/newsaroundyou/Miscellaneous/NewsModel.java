@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Miscellaneous;
 
 public class NewsModel implements Comparable<NewsModel> {
     private String title, category, author, content, publisher, urlToImage, publishedAt, timeAgo, url;

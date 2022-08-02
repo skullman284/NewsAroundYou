@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.vansh.newsaroundyou.R;
 
 public class MainActivity extends AppCompatActivity {
 

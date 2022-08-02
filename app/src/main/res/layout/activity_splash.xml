@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/royalBlue"
     android:textAlignment="center"
-    tools:context=".SplashActivity">
+    tools:context=".Activities.SplashActivity">
 
     <ImageView
         android:transitionName="splash_to_login"

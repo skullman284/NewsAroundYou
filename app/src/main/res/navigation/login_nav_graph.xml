@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.vansh.newsaroundyou.LoginFragment"
+        android:name="com.vansh.newsaroundyou.Fragments.LoginFragments.LoginFragment"
         android:label="NewsAroundYou"
         tools:layout="@layout/fragment_login">
         <action
@@ -20,12 +20,12 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.vansh.newsaroundyou.RegisterFragment"
+        android:name="com.vansh.newsaroundyou.Fragments.LoginFragments.RegisterFragment"
         android:label="NewsAroundYou"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.vansh.newsaroundyou.forgotPasswordFragment"
+        android:name="com.vansh.newsaroundyou.Fragments.LoginFragments.forgotPasswordFragment"
         android:label="NewsAroundYou"
         tools:layout="@layout/fragment_forgot_password" />
 

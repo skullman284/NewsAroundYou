@@ -1,6 +1,5 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Miscellaneous;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Fragments.LoginFragments;
 
 import android.os.Bundle;
 
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.transition.platform.MaterialFadeThrough;
 import com.google.firebase.auth.FirebaseAuth;
+import com.vansh.newsaroundyou.R;
 
 /**
  * A simple {@link Fragment} subclass.

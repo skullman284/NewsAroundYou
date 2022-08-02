@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Miscellaneous;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.vansh.newsaroundyou.Activities.MainActivity;
+import com.vansh.newsaroundyou.Fragments.LoginFragments.LoginFragment;
 
 import java.util.ArrayList;
 
@@ -56,7 +58,7 @@ public class LaunchMain {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
                                                     if (categories.isEmpty()){
-                                                        categories.add("General");
+                                                        categories.add("general");
                                                     }
                                                     guestUser.setCategories(categories);
                                                     databaseReference.child(firebaseUser.getUid()).setValue(guestUser);

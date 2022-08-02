@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou.MainFragments;
+package com.vansh.newsaroundyou.Fragments.MainFragments;
 
 import android.os.Bundle;
 
@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textview.MaterialTextView;
@@ -27,10 +26,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.vansh.newsaroundyou.HomeRecyclerAdapter;
-import com.vansh.newsaroundyou.LaunchMain;
-import com.vansh.newsaroundyou.NewsModel;
-import com.vansh.newsaroundyou.NewsModelListViewModel;
+import com.vansh.newsaroundyou.Adapters.HomeRecyclerAdapter;
+import com.vansh.newsaroundyou.Miscellaneous.LaunchMain;
+import com.vansh.newsaroundyou.Miscellaneous.NewsModel;
+import com.vansh.newsaroundyou.Miscellaneous.NewsModelListViewModel;
 import com.vansh.newsaroundyou.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou;
+package com.vansh.newsaroundyou.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -18,6 +18,7 @@ import android.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
+import com.vansh.newsaroundyou.R;
 
 public class LoginActivity extends AppCompatActivity {
 

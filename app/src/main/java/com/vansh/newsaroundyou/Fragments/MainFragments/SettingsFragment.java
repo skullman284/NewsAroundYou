@@ -1,4 +1,4 @@
-package com.vansh.newsaroundyou.MainFragments;
+package com.vansh.newsaroundyou.Fragments.MainFragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,9 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,13 +24,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.vansh.newsaroundyou.HomeRecyclerAdapter;
-import com.vansh.newsaroundyou.LaunchMain;
-import com.vansh.newsaroundyou.LoginActivity;
-import com.vansh.newsaroundyou.LoginFragment;
-import com.vansh.newsaroundyou.NewsSuggestionProvider;
+import com.vansh.newsaroundyou.Miscellaneous.LaunchMain;
+import com.vansh.newsaroundyou.Activities.LoginActivity;
+import com.vansh.newsaroundyou.Fragments.LoginFragments.LoginFragment;
+import com.vansh.newsaroundyou.Miscellaneous.NewsSuggestionProvider;
 import com.vansh.newsaroundyou.R;
-import com.vansh.newsaroundyou.SettingsRecyclerAdapter;
+import com.vansh.newsaroundyou.Adapters.SettingsRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

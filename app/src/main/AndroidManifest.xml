@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <provider
-            android:authorities="com.vansh.newsaroundyou.NewsSuggestionProvider"
-            android:name=".NewsSuggestionProvider" />
+            android:authorities="com.vansh.newsaroundyou.Miscellaneous.NewsSuggestionProvider"
+            android:name=".Miscellaneous.NewsSuggestionProvider" />
         <!-- this is the searchable activity; it performs searches -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -31,11 +31,11 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".Activities.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
