@@ -15,3 +15,12 @@ This application uses [News API](https://newsapi.org) to fetch news articles fro
 5. Ensure USB debugging is enabled on your device.
 6. If no android device is available, you may create an [Android Virtual Device(AVD)](https://developer.android.com/studio/run/managing-avds) using android studio.
 7. On Android Studio select your device and then click on the play icon on the top bar.
+## *Screenshots*
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/1.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/2.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/3.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/4.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/5.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/6.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/7.jpeg" width = 300>
+<img src = "https://github.com/vansh284/NewsAroundYou/blob/master/Screenshots/8.jpeg" width = 300>
